@@ -1,0 +1,41 @@
+{
+  "name": "docs",
+  "version": "0.0.2",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "start": "bash ./scripts/dev.sh",
+    "lint": "tslint -c tslint.yml -p tsconfig.json",
+    "build": "ncc -m build ./src/index.ts && cp bin.js ./dist/",
+    "release": "yarn build && yarn publish"
+  },
+  "bin": {
+    "docs": "./dist/bin.js"
+  },
+  "files": [
+    "dist"
+  ],
+  "keywords": [
+    "docs",
+    "command-line",
+    "document"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wittbulter/docs-cli.git"
+  },
+  "devDependencies": {
+    "@types/node": "^11.11.0",
+    "@types/node-fetch": "^2.3.4",
+    "ansi-escapes": "^4.1.0",
+    "arg": "^4.1.0",
+    "chalk": "^2.4.2",
+    "ncc": "^0.3.6",
+    "node-fetch": "^2.6.0",
+    "ora": "^3.2.0",
+    "prompts-witt": "^2.2.0",
+    "tslint": "^5.14.0",
+    "tslint-config-lambdas": "^1.0.0",
+    "typescript": "^3.3.4000"
+  }
+}
