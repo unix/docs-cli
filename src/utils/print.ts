@@ -42,6 +42,14 @@ export const showLikes = (names: string[], moduleName: string): void => {
 
 export const showSubmodules = (names: string[], moduleName: string): void => {
   const keyword = chalk.hex('#bdbdbd')(moduleName.toUpperCase())
+  if (names.length === 0) {
+    const showBasic = chalk.cyan(`docs ${moduleName}`)
+    console.log(chalk.gray(`> No documents related to "${keyword}"`))
+    console.log(chalk.gray(`  try run "${showBasic}" get basic document.`))
+    console.log('')
+    return process.exit(0)
+  }
+  
   console.log(chalk.gray(`> "${keyword}" contains docs:`))
   const str = names.reduce((pre, current) => pre ? `${pre}, ${current}` : current, '')
   console.log('  ' + chalk.cyan(str))

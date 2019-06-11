@@ -16,4 +16,7 @@ export const keywordAlias = {
   'ng': 'angular',
   'angularjs': 'angular',
   'rx': 'rxjs',
+  'node': 'nodejs',
+  'node.js': 'nodejs',
+  'github': 'git',
 }
