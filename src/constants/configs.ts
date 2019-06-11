@@ -9,3 +9,11 @@ export const alias = {
   awesome : 'a',
   router : 'r',
 }
+
+export const keywordAlias = {
+  'next.js': 'nextjs',
+  'next': 'nextjs',
+  'ng': 'angular',
+  'angularjs': 'angular',
+  'rx': 'rxjs',
+}

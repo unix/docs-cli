@@ -1,4 +1,4 @@
-import { alias } from '../constants/configs'
+import { alias, keywordAlias } from '../constants/configs'
 
 const space = ' '.repeat(30)
 
@@ -15,4 +15,9 @@ export const toLowerCase = (text: string | undefined): string => {
 
 export const aliasFilter = (text: string): string => {
   return alias[text] || text
+}
+
+export const getStandardKeyword = (text: string): string => {
+  text = text.toLowerCase()
+  return keywordAlias[text] || text
 }

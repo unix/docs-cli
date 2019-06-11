@@ -1,5 +1,6 @@
 import * as docs from '../utils/docs'
 import * as print from '../utils/print'
+import * as tools from '../utils/tools'
 import { Catalog, DocContent } from '../apis'
 
 const getFiles = async (name: string) => {
@@ -24,6 +25,7 @@ const notFoundFile = (keyword: string, subword: string) => {
 }
 
 const search = async (keyword: string, subword: string): Promise<void> => {
+  keyword = tools.getStandardKeyword(keyword)
   const catalog = await docs.getCatalog()
   const hasSubmodule = catalog.modules.find(item => item === keyword)
   if (!hasSubmodule) return notFoundSubmodule(catalog, keyword)
