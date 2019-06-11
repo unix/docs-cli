@@ -3,11 +3,11 @@ import { Catalog, DocContent, Subcatalog } from '../apis'
 
 
 export const getCatalog = (): Promise<Catalog> => {
-  return fetch('catalog.json')
+  return fetch('_catalog.json')
 }
 
 export const getSubcatalog = (name: string): Promise<Subcatalog> => {
-  return fetch(`${name}/catalog.json`)
+  return fetch(`${name}/_catalog.json`)
 }
 
 export const getFileContent = (name: string, filename: string): Promise<DocContent> => {
