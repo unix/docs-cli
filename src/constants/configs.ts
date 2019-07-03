@@ -1,4 +1,4 @@
-export const host = 'https://raw.githubusercontent.com/WittBulter/docs/master/'
+export const host = 'https://raw.githubusercontent.com/unix/docs/master/'
 
 export const redirectHost = 'https://docs.codes/'
 

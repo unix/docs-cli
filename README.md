@@ -26,11 +26,11 @@ npm i -g docs
   
   There are no superfluous command, just find the document for you.
   
-  And everyone is welcome to contribute [new documents](https://github.com/wittbulter/docs/issue/new).
+  And everyone is welcome to contribute [new documents](https://github.com/unix/docs/issue/new).
   
 ## Any questions
 
-  - [create issue](https://github.com/wittbulter/docs-cli/issue/new)
+  - [create issue](https://github.com/unix/docs-cli/issue/new)
   
 ## LICENSE
 [MIT](./LICENSE)
