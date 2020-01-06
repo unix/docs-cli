@@ -1,6 +1,6 @@
 ## docs-cli
 
-The command-line tool for `docs`.
+The command-line tool for [docs](https://github.com/unix/docs).
 
 ## Usage
 *Required NodeJS > 8.0*
@@ -13,24 +13,9 @@ npx docs
 
 <br/>
 
-**OR install latest version**
-
-```bash
-npm i -g docs
-``` 
-
-## Commands
-
-  - `docs` - search or list docs
-  - `add` - append a doc for you
-  
-  There are no superfluous command, just find the document for you.
-  
-  And everyone is welcome to contribute [new documents](https://github.com/unix/docs/issue/new).
-  
 ## Any questions
 
-  - [create issue](https://github.com/unix/docs-cli/issue/new)
-  
+  - [create issue](https://github.com/unix/docs/issues/new)
+
 ## LICENSE
 [MIT](./LICENSE)
