@@ -7,7 +7,7 @@
     "start": "bash ./scripts/dev.sh",
     "lint": "tslint -c tslint.yml -p tsconfig.json",
     "build": "ncc -m build ./src/index.ts && cp bin.js ./dist/",
-    "release": "yarn build && yarn publish"
+    "release": "yarn build && yarn publish --access public --non-interactive"
   },
   "bin": {
     "docs": "./dist/bin.js"
