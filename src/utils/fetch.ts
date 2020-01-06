@@ -22,7 +22,7 @@ const setApiOptions = (input: RequestInit | any): RequestInit => {
     headers: safeHeaders,
     method: defaultMethod.toUpperCase(),
   }, input)
-  
+
   return body ? Object.assign({}, nextOptions, { body }) : nextOptions
 }
 
@@ -33,9 +33,13 @@ const responseParser = <T>(res: Response): Promise<T> => {
   const key = /\bjson\b/.test(contentType) ? 'json'
     : /\btext\b/.test(contentType) ? 'text' : 'blob'
   const parse = res[key]()
+  
   if (res.ok) return parse
   return parse
-    .then(err => Promise.reject(err))
+    .then(err => {
+      console.log(err, 44)
+      return Promise.reject(err)
+    })
 }
 
 const fetchBase = <T>(path: string, options = {}): Promise<T> => {
@@ -43,8 +47,11 @@ const fetchBase = <T>(path: string, options = {}): Promise<T> => {
   const nextOptions = setApiOptions(options)
   return nodeFetch(url, nextOptions)
     .then(responseParser)
-    .then((res: string) => JSON.parse(res)) as Promise<T>
-  }
+    .then((res: string) => {
+      if (typeof res === 'object') return res
+      return JSON.parse(res)
+    }) as Promise<T>
+}
 
 const fetch = <T>(input: string, options: any = {}): Promise<T> => {
   let abortHandle = () => {}

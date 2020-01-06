@@ -2,8 +2,13 @@ export interface Apis {
 
 }
 
+export interface DocModule {
+  name: string
+  type: string
+}
+
 export interface Catalog {
-  modules: string[]
+  modules: DocModule[]
 }
 
 export interface Subcatalog {

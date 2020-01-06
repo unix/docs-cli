@@ -1,7 +1,13 @@
 import chalk from 'chalk'
 import * as tools from './tools'
-import { DocContent } from '../apis'
+import * as shorthash from 'shorthash'
+import { DocContent, DocModule } from '../apis'
 import { redirectHost } from '../constants/configs'
+
+const keyShading = (name: string, keyword: string) => {
+  const point = chalk.cyanBright(keyword)
+  return name.replace(new RegExp(keyword, 'g'), point)
+}
 
 export const catchError = (error: Error) => {
   const msg = error.message || `${error}`
@@ -19,44 +25,19 @@ export const notFoundModule = (name: string): void => {
   process.exit(0)
 }
 
-export const notFoundFile = (keyword: string, subword: string): void => {
-  const category = chalk.hex('#bdbdbd')(keyword)
-  const sub = chalk.hex('#bdbdbd')(subword)
-  const command = chalk.green(`docs ${keyword} ls`)
-  console.log(chalk.gray(`> "${sub}" cannot be found in category "${category}".`))
-  console.log('')
-  console.log(chalk.gray(`  show all docs in "${category}" category by command "${command}".`))
-  process.exit(0)
-}
-
-export const showLikes = (names: string[], moduleName: string): void => {
-  console.log(chalk.gray('> No result was found. Are you interested in these:'))
-  const str = names.reduce((pre, current) => pre ? `${pre}, ${current}` : current, '')
-  const link = chalk.yellow('https://docs.codes/new')
-  console.log('  ' + chalk.cyan(str))
-  console.log('')
-  console.log(chalk.gray(`  You can also submit docs here: ${link}`))
-  console.log('')
-  process.exit(0)
-}
-
-export const showSubmodules = (names: string[], moduleName: string): void => {
-  const keyword = chalk.hex('#bdbdbd')(moduleName.toUpperCase())
-  if (names.length === 0) {
-    const showBasic = chalk.cyan(`docs ${moduleName}`)
-    console.log(chalk.gray(`> No documents related to "${keyword}"`))
-    console.log(chalk.gray(`  try run "${showBasic}" get basic document.`))
-    console.log('')
-    return process.exit(0)
-  }
+export const showLikes = (docModules: DocModule[], keyword: string): void => {
+  const names = docModules.map(doc => doc.name)
+  const str = names.reduce((pre, current) => {
+    const coloredText = keyShading(current, keyword)
+    return pre ? `${pre}, ${coloredText}` : coloredText
+  }, '')
   
-  console.log(chalk.gray(`> "${keyword}" contains docs:`))
-  const str = names.reduce((pre, current) => pre ? `${pre}, ${current}` : current, '')
-  console.log('  ' + chalk.cyan(str))
-  
-  const command = chalk.hex('#bdbdbd')(`docs ${moduleName} <name>`)
+  const command = chalk.yellowBright('npx docs add')
+  console.log(chalk.gray('> No result. Are you interested in these:'))
+  console.log('  ' + chalk.hex('#f0f0f0')(str))
   console.log('')
-  console.log(chalk.gray(`  run "${command}" to list details.`))
+  console.log(chalk.gray(`  You can also submit docs by: ${command}`))
+  console.log('')
   process.exit(0)
 }
 
@@ -66,25 +47,27 @@ const primaryKeys = {
   'demos': 'demos',
 }
 
-export const showContent = (content: DocContent, keyword: string, subword: string): void => {
+export const showContent = (content: DocContent, keyword: string): void => {
   const keys = Object.keys(content)
-  console.log(chalk.gray('> List of docs:'))
-  console.log('')
-  const colon = chalk.hex('#bdbdbd')(':: ')
-  keyword = tools.aliasFilter(keyword)
-  subword = tools.aliasFilter(subword)
+  let text = ''
+  const spacing = tools.supportLink() ? ',  ' : '\n  '
   
-  keys.forEach(key => {
+  keys.forEach((key, index) => {
     const isPrimary = !!primaryKeys[key]
     const value = primaryKeys[key] || key
     const lineColor = isPrimary ? chalk.cyan : chalk.hex('#bdbdbd')
     
-    const name = lineColor(tools.fillString(value))
-    const safeKey = encodeURI(tools.aliasFilter(key))
-    const link = chalk.yellow(`${redirectHost}${keyword}/${subword}/${safeKey}`)
-    
-    console.log(`    ${name}${colon}${link}`)
+    const name = lineColor(tools.supportLink() ? value : tools.fillString(value))
+    const hash = shorthash.unique(content[key])
+    text += `${tools.showLink(name, redirectHost + hash)}${spacing}`
+    if (index !== 0 && index % 6 === 0 && tools.supportLink()) {
+      text += '\n  '
+    }
   })
+  console.log(chalk.bgCyanBright.black(`  ${keyword.toUpperCase()}`))
+  console.log(chalk.gray('> List of docs:'))
+  console.log('')
+  console.log(' ', text)
   console.log('')
   process.exit(0)
 }

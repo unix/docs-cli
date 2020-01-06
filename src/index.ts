@@ -10,7 +10,7 @@ const args = arg({
   '-h': '--help',
   '-v': '--version',
 })
-const [keyword, subword] = args._
+const [keyword] = args._
 
 ;(async() => {
   // options
@@ -20,6 +20,6 @@ const [keyword, subword] = args._
   // commands
   if (!keyword) return options.start()
   if (keyword === 'add') return await commands.add()
-  await commands.search(tools.toLowerCase(keyword), tools.toLowerCase(subword))
+  await commands.search(tools.toLowerCase(keyword))
 })()
   .catch(catchError)

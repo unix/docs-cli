@@ -1,4 +1,4 @@
-import { alias, keywordAlias } from '../constants/configs'
+import terminalLink from 'terminal-link'
 
 const space = ' '.repeat(30)
 
@@ -13,11 +13,14 @@ export const toLowerCase = (text: string | undefined): string => {
   return text.toLowerCase()
 }
 
-export const aliasFilter = (text: string): string => {
-  return alias[text] || text
+export const showLink = (text: string, url: string): string => {
+  return terminalLink(text, url, {
+    fallback: (text: string, url: string): string => {
+      return `${text} [${url}]`
+    },
+  })
 }
 
-export const getStandardKeyword = (text: string): string => {
-  text = text.toLowerCase()
-  return keywordAlias[text] || text
+export const supportLink = (): boolean => {
+  return terminalLink.isSupported
 }
