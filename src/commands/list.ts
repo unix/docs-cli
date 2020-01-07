@@ -11,7 +11,6 @@ const list = async () => {
   const tags = new Set<string>()
   catalog.modules.forEach(docModule => tags.add(docModule.type))
   print.showList([...tags])
-  process.exit(0)
 }
 
 export default list

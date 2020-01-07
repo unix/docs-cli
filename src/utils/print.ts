@@ -31,12 +31,10 @@ export const showLikes = (docModules: DocModule[], keyword: string): void => {
     const coloredText = keyShading(current, keyword)
     return pre ? `${pre}, ${coloredText}` : coloredText
   }, '')
-  
-  const command = chalk.yellowBright('npx docs add')
   console.log(chalk.gray('> No result. Are you interested in these:'))
   console.log('  ' + chalk.hex('#f0f0f0')(str))
   console.log('')
-  console.log(chalk.gray(`  You can also submit docs by: ${command}`))
+  console.log(chalk.gray(`  You can also submit docs by: ${chalk.yellowBright('npx docs add')}`))
   console.log('')
   process.exit(0)
 }
@@ -81,4 +79,37 @@ export const showList = (tags: string[]): void => {
   console.log(chalk.gray('> All tags:'))
   console.log(text)
   console.log('')
+  process.exit(0)
+}
+
+export const showTagContent = (docModules: DocModule[], keyword: string) => {
+  let text = ''
+  docModules
+    .map(doc => doc.name)
+    .forEach((tag, index) => {
+      const prefix = index === 0 ? '  ' : ',  '
+      text += `${prefix}${chalk.italic(tag)}`
+    })
+  keyword = chalk.cyan(keyword.toUpperCase())
+  
+  console.log(chalk.gray(`> ${keyword} is a tag. These are related:`))
+  console.log('  ' + chalk.hex('#f0f0f0')(text))
+  console.log('')
+  process.exit(0)
+}
+
+export const showTagLikes = (docModules: DocModule[], keyword: string): void => {
+  const str = docModules
+    .map(doc => doc.type)
+    .reduce((pre, current) => {
+      const coloredText = keyShading(current, keyword)
+      return pre ? `${pre}, ${coloredText}` : coloredText
+    }, '')
+  
+  console.log(chalk.gray('> No result. Are you interested in these:'))
+  console.log('  ' + chalk.hex('#f0f0f0')(str))
+  console.log('')
+  console.log(chalk.gray(`  You can also submit docs by: ${chalk.yellowBright('npx docs add')}`))
+  console.log('')
+  process.exit(0)
 }

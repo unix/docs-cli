@@ -21,13 +21,13 @@ const search = async (keyword: string): Promise<void> => {
   // keyword is not a document
   if (!docModule) {
     // keyword is a category name
-    if (isType) return print.showLikes(typeLikes, keyword)
+    if (isType) return print.showTagContent(typeLikes, keyword)
     
     // keyword hit document name
     if (docLikes.length) return print.showLikes(docLikes, keyword)
   
     // keyword hit category name
-    if (typeLikes.length) return print.showLikes(typeLikes, keyword)
+    if (typeLikes.length) return print.showTagLikes(typeLikes, keyword)
     
     // not a keyword
     return notFoundItem(keyword)
