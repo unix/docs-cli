@@ -18,9 +18,8 @@ export const catchError = (error: Error) => {
 
 export const notFoundModule = (name: string): void => {
   const keyword = chalk.hex('#bdbdbd')(name.toUpperCase())
-  const link = chalk.yellow('https://docs.codes/new')
   console.log(chalk.gray(`> Not found any docs about "${keyword}".`))
-  console.log(chalk.gray(`  You can also submit docs here: ${link}`))
+  console.log(chalk.gray(`  You can also submit docs by: ${chalk.yellowBright('npx docs add')}`))
   console.log('')
   process.exit(0)
 }
