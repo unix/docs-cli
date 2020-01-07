@@ -71,3 +71,14 @@ export const showContent = (content: DocContent, keyword: string): void => {
   console.log('')
   process.exit(0)
 }
+
+export const showList = (tags: string[]): void => {
+  let text = ''
+  tags.forEach((tag, index) => {
+    const prefix = index === 0 ? '  ' : ',  '
+    text += `${prefix}${chalk.cyan(tag)}`
+  })
+  console.log(chalk.gray('> All tags:'))
+  console.log(text)
+  console.log('')
+}

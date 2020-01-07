@@ -1,5 +1,5 @@
 import fetch from './fetch'
-import { Catalog, DocContent, DocModule, Subcatalog } from '../apis'
+import { Catalog, DocContent, DocModule } from '../apis'
 
 
 export const getCatalog = (): Promise<Catalog> => {

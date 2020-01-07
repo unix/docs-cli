@@ -20,6 +20,7 @@ const [keyword] = args._
   // commands
   if (!keyword) return options.start()
   if (keyword === 'add') return await commands.add()
+  if (keyword === 'ls' || keyword === 'list') return await commands.list()
   await commands.search(tools.toLowerCase(keyword))
 })()
   .catch(catchError)
