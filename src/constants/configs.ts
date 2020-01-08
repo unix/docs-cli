@@ -1,8 +1,5 @@
-/**
- * The reason for manually specifying the version is better cache consistency
- * Follow version of docs-catalog
- * NPM repo:: https://www.npmjs.com/package/docs-catalog
- */
-export const host = 'https://cdn.jsdelivr.net/npm/docs-catalog@0.0.2/'
+const pkg = require('docs-catalog/package.json') || {}
+
+export const host = `https://cdn.jsdelivr.net/npm/docs-catalog@${pkg.version || 'latest'}/`
 
 export const redirectHost = 'https://docs.codes/'

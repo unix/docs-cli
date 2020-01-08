@@ -156,6 +156,11 @@ diff@^3.2.0:
   resolved "https://registry.yarnpkg.com/diff/-/diff-3.5.0.tgz#800c0dd1e0a8bfbc95835c202ad220fe317e5a12"
   integrity sha512-A46qtFgd+g7pDZinpnwiRJtxbC1hpgf0uzP3iG89scHk0AUC7A1TGxf5OiiOUv/JMZR8GOt8hL900hV0bOy5xA==
 
+docs-catalog@^0.0.2:
+  version "0.0.2"
+  resolved "https://registry.yarnpkg.com/docs-catalog/-/docs-catalog-0.0.2.tgz#857ef52118465064371fe441161ed9828d026266"
+  integrity sha512-4IyJ5qVIuXzF9y2gKjo0MY396e0yM7B8nVIMmSZsuJA26Dn7nxCGDTvA3yeGguNzN0j04sauhMaADpFWqy5zcQ==
+
 escape-string-regexp@^1.0.5:
   version "1.0.5"
   resolved "https://registry.yarnpkg.com/escape-string-regexp/-/escape-string-regexp-1.0.5.tgz#1b61c0562190a8dff6ae3bb2cf0200ca130b86d4"
