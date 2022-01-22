@@ -32,7 +32,7 @@
     "arg": "^4.1.0",
     "chalk": "^2.4.2",
     "docs-catalog": "^0.0.3-canary.0",
-    "node-fetch": "^2.6.0",
+    "node-fetch": "^3.1.1",
     "ora": "^3.2.0",
     "prompts-witt": "^2.2.0",
     "shorthash": "^0.0.2",
