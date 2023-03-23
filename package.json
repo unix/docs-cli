@@ -1,44 +1,11 @@
 {
-  "name": "docs",
-  "version": "0.3.2-canary.0",
+  "name": "march-madness-2023-live-free-broadcast",
+  "version": "1.0.0",
+  "description": "March Madness 2023 Live: March Madness 2023 is an upcoming mixed martial arts event produced by the NCAAM men's college basketball scores that will take place on March 20, 2023, at The O₂ Arena in USA, England,",
   "main": "index.js",
-  "license": "MIT",
   "scripts": {
-    "start": "bash ./scripts/dev.sh",
-    "lint": "tslint -c tslint.yml -p tsconfig.json",
-    "build": "ncc -m build ./src/index.ts && cp bin.js ./dist/",
-    "release": "yarn build && yarn publish --access public --non-interactive"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "bin": {
-    "docs": "./dist/bin.js"
-  },
-  "files": [
-    "dist"
-  ],
-  "keywords": [
-    "docs",
-    "command-line",
-    "document"
-  ],
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/unix/docs-cli.git"
-  },
-  "devDependencies": {
-    "@types/node": "^11.11.0",
-    "@types/node-fetch": "^2.3.4",
-    "@zeit/ncc": "^0.21.0",
-    "ansi-escapes": "^4.1.0",
-    "arg": "^4.1.0",
-    "chalk": "^2.4.2",
-    "docs-catalog": "^0.0.3-canary.0",
-    "node-fetch": "^2.6.0",
-    "ora": "^3.2.0",
-    "prompts-witt": "^2.2.0",
-    "shorthash": "^0.0.2",
-    "terminal-link": "^2.1.1",
-    "tslint": "^5.14.0",
-    "tslint-config-lambdas": "^1.0.0",
-    "typescript": "^3.3.4000"
-  }
+  "author": "bnm",
+  "license": "ISC"
 }
